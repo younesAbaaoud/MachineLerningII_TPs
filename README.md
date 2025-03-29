@@ -1,83 +1,53 @@
 # Machine Learning II – Travaux Pratiques en Reinforcement Learning
 
-Ce dépôt regroupe une série de travaux pratiques (TP) destinés à explorer et implémenter divers algorithmes d’apprentissage par renforcement (RL) à l’aide de Python et d’OpenAI Gym. Chaque TP a été conçu pour permettre aux étudiants et aux chercheurs de se familiariser avec les concepts clés du RL à travers des exercices progressifs et des études de cas pratiques.
+# TP Q-Learning et Reinforcement Learning
 
-## Table des Matières
+## Contexte
 
-- [TP1 Outils essentiels du RL](#tp1-outils-essentiels-du-rl)
-- [TP2 Concepts Fondamentaux du RL en exploitant Q-Learning](#tp2-concepts-fondamentaux-du-rl-en-exploitant-q-learning)
-- [TP3 Optimisation des Feux de circulation avec RL](#tp3-optimisation-des-feux-de-circulation-avec-rl)
-- [TP4 Apprentissage Profond pour les jeux](#tp4-apprentissage-profond-pour-les-jeux)
+Ce projet consiste à appliquer des algorithmes de **Reinforcement Learning** tels que **Q-learning**, **SARSA** et **PPO** dans divers environnements de simulation. L'objectif est de développer des agents capables d'apprendre des stratégies optimales dans des environnements tels que **CartPole-v1**, **Taxi-v3**, et un environnement personnalisé de gestion de trafic. Ce TP vise à illustrer les principes de base du **Reinforcement Learning** et de la **mise en œuvre de politiques d'apprentissage** à travers des simulations.
 
-## Technologies Utilisées
 
-- **Langage** : Python
-- **Frameworks et Librairies** :
-  - OpenAI Gym
-  - Numpy
-  - Matplotlib (pour la visualisation)
 
-## TP1 – Outils essentiels du RL
+## Objectifs du TP
 
-**Objectif** : Se familiariser avec les outils essentiels du RL en explorant l’environnement OpenAI Gym.
+- Implémenter et tester des algorithmes de **Reinforcement Learning** tels que **Q-learning**, **SARSA**, et **PPO**.
+- Appliquer ces algorithmes dans plusieurs environnements, dont **CartPole-v1**, **Taxi-v3**, et un environnement personnalisé de gestion de trafic.
+- Analyser les performances des agents et visualiser les résultats via des graphiques.
 
-### Contenu et Exercices :
+## Résultats Obtenus
 
-1. **Présentation des bibliothèques clés** : Découverte de l’environnement Gym et des bibliothèques associées.
-2. **Exercices pratiques** :
-   - Exploration d’un environnement Gym.
-   - Manipulation des observations et des récompenses.
-   - Contrôle manuel de l’agent.
-   - Évaluation des performances d’une politique aléatoire.
+- **Q-Learning sur une grille :** L'agent apprend à se déplacer dans une grille pour atteindre un trésor tout en évitant des pièges. L'algorithme montre une convergence stable vers la politique optimale après quelques milliers d'épisodes.
+  
+- **CartPole-v1 :** L'agent utilise Q-Learning et SARSA pour apprendre à équilibrer une barre en utilisant une méthode d'exploration-exploitation. Les résultats montrent que **SARSA** a une convergence plus douce que **Q-Learning**, mais les deux approches réussissent à stabiliser la barre dans la plupart des essais.
 
-## TP2 – Concepts Fondamentaux du RL en exploitant Q-Learning
+- **Traffic Environment :** L'agent apprend à gérer le trafic dans un environnement simulé, en maximisant les récompenses liées à l'efficacité du trafic. Cette partie montre comment les agents peuvent être utilisés dans des contextes plus complexes et personnalisés.
 
-**Objectif** : Appliquer les concepts du RL en implémentant l’algorithme Q-Learning.
+- **Taxi-v3 avec PPO :** L'algorithme **PPO** a été utilisé pour enseigner à l'agent à transporter des passagers dans un environnement de taxi. L'agent améliore progressivement ses performances, atteignant une politique stable après plusieurs milliers d'interactions.
 
-### Contenu et Exercices :
+## Remarques Techniques
 
-1. **Concepts clés** :
-   - Comprendre et construire une Q-table.
-   - Impact des stratégies d’exploration (ε-greedy).
+1. **Environnement CartPole :**
+   - L'implémentation de l'agent CartPole utilise la bibliothèque **gymnasium**, qui permet de facilement configurer et tester des agents dans des environnements standard.
+   - Le rendu graphique peut être activé pour observer l'évolution de l'agent pendant l'exécution en définissant le mode `render_mode="human"` dans la fonction `gym.make()`.
+
+2. **Algorithmes de Q-Learning et SARSA :**
+   - Ces algorithmes utilisent des **tables Q** pour estimer les valeurs d'action dans chaque état. Un taux d'apprentissage et un facteur de discount sont utilisés pour ajuster ces valeurs au fur et à mesure des interactions avec l'environnement.
+
+3. **PPO sur Taxi-v3 :**
+   - **PPO** est un algorithme plus complexe qui nécessite l'utilisation de politiques stochastiques. Il est particulièrement adapté aux environnements où l'agent doit explorer de grandes espaces d'actions.
    
-2. **Exercices pratiques** :
-   - Exploration de l’environnement FrozenLake-v1.
-   - Initialisation et mise à jour de la Q-table.
-   - Analyse de la convergence des valeurs Q.
+4. **Environnement de Trafic :**
+   - Un environnement personnalisé a été utilisé pour simuler un réseau de trafic. L'agent doit apprendre à naviguer efficacement en optimisant le trafic et les déplacements.
 
-## TP3 – Optimisation des Feux de circulation avec RL
 
-**Objectif** : Utiliser le RL pour optimiser la gestion des feux de circulation dans un environnement simulé.
 
-### Contenu et Exercices :
+## Conclusion
 
-1. **Modélisation et simulation** :
-   - Mise en place d’un environnement de gestion du trafic.
-   - Implémentation de Q-Learning et SARSA pour l’optimisation.
-   
-2. **Exercices pratiques** :
-   - Découverte et modélisation du réseau de feux.
-   - Implémentation et comparaison des algorithmes.
-   - Visualisation des résultats via des graphiques et analyses quantitatives.
+Ce projet illustre l'application des algorithmes de **Reinforcement Learning** dans des environnements variés, allant de la gestion de grille simple avec **Q-Learning** à des environnements plus complexes comme **CartPole-v1**, **Taxi-v3**, et un environnement personnalisé de gestion du trafic. Les résultats obtenus montrent que ces algorithmes sont capables d'apprendre des stratégies optimales, mais que chaque environnement présente des défis uniques pour l'agent.
 
-## TP4 – Apprentissage Profond pour les jeux
+- **Q-Learning** et **SARSA** sont efficaces pour des problèmes simples comme la grille et CartPole, mais peuvent rencontrer des difficultés dans des environnements plus dynamiques.
+- **PPO**, qui est plus adapté à des environnements complexes avec des actions continues et stochastiques, a montré de bonnes performances sur Taxi-v3.
 
-**Objectif** : Appliquer les techniques d’apprentissage profond en RL en entraînant un agent dans l’environnement Taxi-v3 grâce à l’algorithme PPO.
+L'ensemble du projet démontre bien les capacités du **Reinforcement Learning** à résoudre des problèmes complexes, et souligne l'importance de choisir l'algorithme approprié en fonction de l'environnement et de la tâche. Les visualisations des performances des agents montrent l'évolution de leur apprentissage et leur capacité à trouver des solutions optimales.
 
-### Contenu et Exercices :
-
-1. **Théorie et pratique** :
-   - Initialisation des tables de politiques et de valeurs.
-   - Collecte d’épisodes avec exploration.
-   - Mise à jour de la politique via PPO avec mécanisme de clipping.
-   
-2. **Exercices pratiques** :
-   - Initialisation et préparation de l’environnement.
-   - Collecte des épisodes et ajustement des hyperparamètres.
-   - Évaluation des performances de l’agent.
-
-## Installation
-
-1. Clonez le dépôt :
-   ```bash
-   git clone https://github.com/votre-utilisateur/machine-learning-ii.git
+En conclusion, ce TP a permis de mieux comprendre les principes fondamentaux du Reinforcement Learning et d'explorer différentes approches pour résoudre des problèmes complexes en intelligence artificielle.
