@@ -1,6 +1,5 @@
 # Machine Learning II – Travaux Pratiques en Reinforcement Learning
 
-# TP Q-Learning et Reinforcement Learning
 
 ## Contexte
 
